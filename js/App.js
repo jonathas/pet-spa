@@ -1,14 +1,4 @@
-'use strict';
-
-/**
- * @ngdoc overview
- * @name petSpaApp
- * @description
- * # petSpaApp
- *
- * Main module of the application.
- */
-angular.module('petSpaApp', ['ngRoute'])
+angular.module('petApp', ['ngRoute'])
     .config(function($routeProvider) {
         $routeProvider
             .when('/global', {

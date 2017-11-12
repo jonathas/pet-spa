@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" ng-app="petSpaApp">
+<html lang="en" ng-app="petApp">
 
 <head>
     <meta charset="utf-8">
@@ -51,40 +51,76 @@
     <script src="./js/lib/angular-resource.min.js"></script>
     <script src="./js/lib/angular-route.min.js"></script>
 
-    <script src="./js/app.js"></script>
-    <script src="./js/controllers/global.js"></script>
-    <script src="./js/controllers/specific.js"></script>
+    <script src="./js/App.js"></script>
+    <script src="./js/services/AnimalService.js"></script>
+    <script src="./js/services/FamilyService.js"></script>
+    <script src="./js/controllers/GlobalCtrl.js"></script>
+    <script src="./js/controllers/SpecificCtrl.js"></script>
 
     <script type="text/ng-template" id="global.html">
         <h2 class="content-subhead">Global list</h2>
-        <form class="pure-form pure-form-aligned">
-            <fieldset>
-                <div class="pure-control-group">
-                    <label for="name">Username</label>
-                    <input id="name" type="text" placeholder="Username">
-                    <span class="pure-form-message-inline"></span>
-                </div>
 
-                <div class="pure-control-group">
-                    <label for="password">Password</label>
-                    <input id="password" type="password" placeholder="Password">
-                </div>
+        <div class="pure-menu pure-menu-horizontal">
+            <ul class="pure-menu-list">
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Add Family</a></li>
+                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Add Individual</a></li>
+            </ul>
+        </div>
 
-                <div class="pure-control-group">
-                    <label for="email">Email Address</label>
-                    <input id="email" type="email" placeholder="Email Address">
-                </div>
+        <div id="add-family">
+            <form class="pure-form pure-form-aligned">
+                <fieldset>
+                    <div class="pure-control-group">
+                        <legend>Family</legend>
+                        <label for="diet">Diet</label>
+                        <input id="diet" type="text">
+                        <span class="pure-form-message-inline"></span>
+                    </div>
 
-                <div class="pure-control-group">
-                    <label for="foo">Supercalifragilistic Label</label>
-                    <input id="foo" type="text" placeholder="Enter something here...">
-                </div>
+                    <div class="pure-control-group">
+                        <label for="noise">Noise</label>
+                        <input id="noise" type="text">
+                    </div>
 
-                <div class="pure-controls">
-                    <button type="submit" class="pure-button pure-button-primary submit">Submit</button>
-                </div>
-            </fieldset>
-        </form>
+                    <div class="pure-control-group">
+                        <label for="ability">Ability</label>
+                        <input id="ability" type="text">
+                    </div>
+
+                    <div class="pure-controls">
+                        <button type="submit" class="pure-button pure-button-primary submit">Add</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <div id="add-animal">
+            <form class="pure-form pure-form-aligned">
+                <fieldset>
+                    <legend>Individual</legend>
+                    <div class="pure-control-group">
+                        <label for="family">Family</label>
+                        <select name="family">
+                                <option value="">Select a family</option>
+                        </select>
+                        <span class="pure-form-message-inline"></span>
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="name">Name</label>
+                        <input id="name" type="text">
+                    </div>
+
+                    <div class="pure-control-group">
+                        <label for="age">Age</label>
+                        <input id="age" type="number" min="0">
+                    </div>
+
+                    <div class="pure-controls">
+                        <button type="submit" class="pure-button pure-button-primary submit">Add</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
 
         <table class="pure-table">
             <thead>
@@ -112,11 +148,43 @@
     </script>
 
     <script type="text/ng-template" id="specific.html">
-        This is the specific page
-        <table>
-            <tr ng-repeat="x in awesomeThings">
-                <td>{{x}}</td>
-            </tr>
+        <h2 class="content-subhead">Specific list</h2>
+
+        <form class="pure-form">
+            <fieldset>
+                <legend>Family</legend>
+                <select>
+                    <option value="">Select a family</option>
+                </select>
+                <button type="submit" class="pure-button pure-button-primary">Filter</button>
+            </fieldset>
+        </form>
+
+        <table class="pure-table">
+            <p>Family: (Selected family name here)</p>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr class="pure-table-odd">
+                    <td>Cat</td>
+                    <td>2</td>
+                    <td><button class="button-error pure-button">Remove</button></a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Dog</td>
+                    <td>4</td>
+                    <td><button class="button-error pure-button">Remove</button></a>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </script>
 </body>
