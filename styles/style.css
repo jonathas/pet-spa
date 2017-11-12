@@ -1,0 +1,12 @@
+.pure-form-aligned .pure-control-group label {
+    text-align: left;
+    width: 8em;
+}
+
+.pure-form {
+    padding-bottom: 30px;
+}
+
+.submit {
+    margin-left: -27px;
+}

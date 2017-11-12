@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en" ng-app="petSpaApp">
+
+<head>
+    <meta charset="utf-8">
+    <title>Pet Web Project</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="styles/pure-min.css">
+    <!--[if lte IE 8]>
+            <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
+        <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="styles/side-menu.css">
+    <!--<![endif]-->
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+
+    <div id="layout">
+        <!-- Menu toggle -->
+        <a href="#menu" id="menuLink" class="menu-link">
+            <!-- Hamburger icon -->
+            <span></span>
+        </a>
+
+        <div id="menu">
+            <div class="pure-menu">
+                <a class="pure-menu-heading" ng-href="#!global">Animals</a>
+
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item"><a ng-href="#!global" class="pure-menu-link">Global</a></li>
+                    <li class="pure-menu-item"><a ng-href="#!specific" class="pure-menu-link">Specific</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="main">
+            <div class="header">
+                <h1>Pet Web Project</h1>
+            </div>
+
+            <div class="content">
+                <div ng-view=""></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/lib/angular.min.js"></script>
+    <script src="./js/lib/angular-resource.min.js"></script>
+    <script src="./js/lib/angular-route.min.js"></script>
+
+    <script src="./js/app.js"></script>
+    <script src="./js/controllers/global.js"></script>
+    <script src="./js/controllers/specific.js"></script>
+
+    <script type="text/ng-template" id="global.html">
+        <h2 class="content-subhead">Global list</h2>
+        <form class="pure-form pure-form-aligned">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label for="name">Username</label>
+                    <input id="name" type="text" placeholder="Username">
+                    <span class="pure-form-message-inline"></span>
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" placeholder="Password">
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="email">Email Address</label>
+                    <input id="email" type="email" placeholder="Email Address">
+                </div>
+
+                <div class="pure-control-group">
+                    <label for="foo">Supercalifragilistic Label</label>
+                    <input id="foo" type="text" placeholder="Enter something here...">
+                </div>
+
+                <div class="pure-controls">
+                    <button type="submit" class="pure-button pure-button-primary submit">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+
+        <table class="pure-table">
+            <thead>
+                <tr>
+                    <th>Family</th>
+                    <th>Diet</th>
+                    <th>Individuals</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr class="pure-table-odd">
+                    <td>Honda</td>
+                    <td>Accord</td>
+                    <td>2009</td>
+                </tr>
+
+                <tr>
+                    <td>Toyota</td>
+                    <td>Camry</td>
+                    <td>2012</td>
+                </tr>
+            </tbody>
+        </table>
+    </script>
+
+    <script type="text/ng-template" id="specific.html">
+        This is the specific page
+        <table>
+            <tr ng-repeat="x in awesomeThings">
+                <td>{{x}}</td>
+            </tr>
+        </table>
+    </script>
+</body>
+
+</html>
