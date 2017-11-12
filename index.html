@@ -57,17 +57,17 @@
     <script src="./js/controllers/GlobalCtrl.js"></script>
     <script src="./js/controllers/SpecificCtrl.js"></script>
 
-    <script type="text/ng-template" id="global.html">
+    <script type="text/ng-template" id="global.html" ng-controller="GlobalCtrl">
         <h2 class="content-subhead">Global list</h2>
 
         <div class="pure-menu pure-menu-horizontal">
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Add Family</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Add Individual</a></li>
+                <li class="pure-menu-item"><button class="pure-button pure-button-primary" id="add-family-action" ng-click="showAddFamily()">Add Family</button></li>
+                <li class="pure-menu-item"><button class="pure-button pure-button-primary" id="add-individual-action" ng-click="showAddIndividual()">Add Individual</button></li>
             </ul>
         </div>
 
-        <div id="add-family">
+        <div id="add-family" ng-show="formFamily">
             <form class="pure-form pure-form-aligned">
                 <fieldset>
                     <div class="pure-control-group">
@@ -93,11 +93,12 @@
                 </fieldset>
             </form>
         </div>
-        <div id="add-animal">
+
+        <div id="add-animal" ng-show="formIndividual">
             <form class="pure-form pure-form-aligned">
                 <fieldset>
-                    <legend>Individual</legend>
                     <div class="pure-control-group">
+                        <legend>Individual</legend>
                         <label for="family">Family</label>
                         <select name="family">
                                 <option value="">Select a family</option>
@@ -122,6 +123,7 @@
             </form>
         </div>
 
+        <p>Families</p>
         <table class="pure-table">
             <thead>
                 <tr>
@@ -147,7 +149,7 @@
         </table>
     </script>
 
-    <script type="text/ng-template" id="specific.html">
+    <script type="text/ng-template" id="specific.html" ng-controller="SpecificCtrl">
         <h2 class="content-subhead">Specific list</h2>
 
         <form class="pure-form">
