@@ -1,6 +1,6 @@
 # Pet Web project
 
-The goal of this project is to have a single-page application that displays and let you manage a list of animals.
+The goal of this project is to have a single-page application that displays and lets you manage a list of animals.
 
 Each animal is of a specific family (e.g. dog, cat ...), has a name (unique), an age, a diet and a noise. Diet and noise are specific to the
 family. It is also important to note that each family is able to perform a special ability (e.g., jump, swim, ...).
