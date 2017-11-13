@@ -7,6 +7,7 @@ angular.module('petApp')
         }
 
         this.addFamily = function(family) {
+            if (family.name === "") return false;
             let clonedFamily = _.clone(family);
             let any = familiesList.filter(familyObj => familyObj.name === clonedFamily.name);
             if (!any.length) {
@@ -16,10 +17,10 @@ angular.module('petApp')
             return false;
         }
 
-        this.addIndividualCount = function(familyName) {
+        this.updateIndividualCount = function(familyName, action = "sum") {
             let family = familiesList.filter(familyObj => familyObj.name === familyName);
             if (family.length > 0) {
-                family[0].individuals++;
+                action === "sum" ? family[0].individuals++ : family[0].individuals--;
             }
         }
 

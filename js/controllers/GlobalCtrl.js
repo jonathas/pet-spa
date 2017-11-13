@@ -27,7 +27,6 @@ angular.module('petApp')
 
         $scope.addAnimal = function() {
             if (AnimalService.addAnimal($scope.animal)) {
-                FamilyService.addIndividualCount($scope.animal.family);
                 $scope.animal = AnimalService.getAnimalObj();
             }
         };
