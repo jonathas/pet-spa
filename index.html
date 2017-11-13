@@ -140,7 +140,10 @@
 
             <tbody>
                 <tr ng-repeat="family in familiesList">
-                    <td>{{family.name}}</td>
+                    <td class="tooltip">
+                        <span class="hoverable">{{family.name}}</span>
+                        <span class="tooltiptext">{{family.noise}}</span>
+                    </td>
                     <td>{{family.diet}}</td>
                     <td>{{family.individuals}}</td>
                 </tr>
