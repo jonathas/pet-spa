@@ -100,29 +100,30 @@
         </div>
 
         <div id="add-animal" ng-show="formIndividual">
-            <form class="pure-form pure-form-aligned">
+            <form class="pure-form pure-form-aligned" name="addAnimalForm">
                 <fieldset>
                     <div class="pure-control-group">
                         <legend>Individual</legend>
                         <label for="family">Family</label>
                         <select name="family">
                                 <option value="">Select a family</option>
+                                <option ng-repeat="family in familiesList" ng-model="family.name">{{family.name}}</option>
                         </select>
                         <span class="pure-form-message-inline"></span>
                     </div>
 
                     <div class="pure-control-group">
                         <label for="name">Name</label>
-                        <input id="name" type="text">
+                        <input id="name" type="text" ng-model="animal.name">
                     </div>
 
                     <div class="pure-control-group">
                         <label for="age">Age</label>
-                        <input id="age" type="number" min="0">
+                        <input id="age" type="number" min="0" ng-model="animal.age">
                     </div>
 
                     <div class="pure-controls">
-                        <button type="submit" class="pure-button pure-button-primary submit">Add</button>
+                        <button type="submit" class="pure-button pure-button-primary submit" ng-click="addAnimal()">Add</button>
                     </div>
                 </fieldset>
             </form>
@@ -139,16 +140,10 @@
             </thead>
 
             <tbody>
-                <tr class="pure-table-odd">
-                    <td>Honda</td>
-                    <td>Accord</td>
-                    <td>2009</td>
-                </tr>
-
-                <tr>
-                    <td>Toyota</td>
-                    <td>Camry</td>
-                    <td>2012</td>
+                <tr ng-repeat="family in familiesList">
+                    <td>{{family.name}}</td>
+                    <td>{{family.diet}}</td>
+                    <td>{{family.individuals}}</td>
                 </tr>
             </tbody>
         </table>
@@ -157,18 +152,19 @@
     <script type="text/ng-template" id="specific.html" ng-controller="SpecificCtrl">
         <h2 class="content-subhead">Specific list</h2>
 
-        <form class="pure-form">
+        <form class="pure-form" name="filterForm">
             <fieldset>
                 <legend>Family</legend>
-                <select>
+                <select name="filterFamily" ng-model="filterFamily">
                     <option value="">Select a family</option>
+                    <option ng-repeat="family in familiesList">{{family.name}}</option>
                 </select>
-                <button type="submit" class="pure-button pure-button-primary">Filter</button>
+                <button type="submit" class="pure-button pure-button-primary" ng-click="filterByFamily()">Filter</button>
             </fieldset>
         </form>
 
         <table class="pure-table">
-            <p>Family: (Selected family name here)</p>
+            <p>Family: <span id="filter-selected-family">All</span></p>
             <thead>
                 <tr>
                     <th>Name</th>
@@ -178,16 +174,9 @@
             </thead>
 
             <tbody>
-                <tr class="pure-table-odd">
-                    <td>Cat</td>
-                    <td>2</td>
-                    <td><button class="button-error pure-button">Remove</button></a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Dog</td>
-                    <td>4</td>
+                <tr ng-repeat="animal in animalsList">
+                    <td>{{animal.name}}</td>
+                    <td>{{animal.age}}</td>
                     <td><button class="button-error pure-button">Remove</button></a>
                     </td>
                 </tr>

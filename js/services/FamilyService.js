@@ -3,7 +3,7 @@ angular.module('petApp')
         let familiesList = [];
 
         this.getFamilyObj = function() {
-            return { name: '', diet: '', noise: '', ability: '' };
+            return { name: '', diet: '', noise: '', ability: '', individuals: 0 };
         }
 
         this.addFamily = function(family) {
@@ -11,7 +11,9 @@ angular.module('petApp')
             let any = familiesList.filter(familyObj => familyObj.name === clonedFamily.name);
             if (!any.length) {
                 familiesList.push(clonedFamily);
+                return true;
             }
+            return false;
         }
 
         this.getFamilies = function() {

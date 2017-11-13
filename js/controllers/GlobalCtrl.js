@@ -4,6 +4,9 @@ angular.module('petApp')
         $scope.formIndividual = false;
 
         $scope.family = FamilyService.getFamilyObj();
+        $scope.animal = AnimalService.getAnimalObj();
+
+        $scope.familiesList = FamilyService.getFamilies();
 
         $scope.showAddFamily = function() {
             $scope.formFamily = true;
@@ -16,12 +19,18 @@ angular.module('petApp')
         };
 
         $scope.addFamily = function() {
-            FamilyService.addFamily($scope.family);
-            console.log(FamilyService.getFamilies());
+            if (FamilyService.addFamily($scope.family)) {
+                $scope.family = FamilyService.getFamilyObj();
+                $scope.familiesList = FamilyService.getFamilies();
+            }
         };
 
         $scope.addIndividual = function() {
-
+            console.log($scope.animal);
+            if (AnimalService.addIndividual($scope.animal)) {
+                $scope.animal = AnimalService.getAnimalObj();
+                // Update count of individuals in the correct family
+            }
         };
 
     });
