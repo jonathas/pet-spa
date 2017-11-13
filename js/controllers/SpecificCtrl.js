@@ -5,8 +5,4 @@ angular.module('petApp')
         $scope.familiesList = FamilyService.getFamilies();
         $scope.animalsList = AnimalService.getAnimals();
 
-        $scope.filterByFamily = function(family) {
-
-        }
-
     });

@@ -16,6 +16,13 @@ angular.module('petApp')
             return false;
         }
 
+        this.addIndividualCount = function(familyName) {
+            let family = familiesList.filter(familyObj => familyObj.name === familyName);
+            if (family.length > 0) {
+                family[0].individuals++;
+            }
+        }
+
         this.getFamilies = function() {
             return familiesList;
         }

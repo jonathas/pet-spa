@@ -64,7 +64,7 @@
         <div class="pure-menu pure-menu-horizontal">
             <ul class="pure-menu-list">
                 <li class="pure-menu-item"><button class="pure-button pure-button-primary" id="add-family-action" ng-click="showAddFamily()">Add Family</button></li>
-                <li class="pure-menu-item"><button class="pure-button pure-button-primary" id="add-individual-action" ng-click="showAddIndividual()">Add Individual</button></li>
+                <li class="pure-menu-item"><button class="pure-button pure-button-primary" id="add-animal-action" ng-click="showAddAnimal()">Add Animal</button></li>
             </ul>
         </div>
 
@@ -99,15 +99,15 @@
             </form>
         </div>
 
-        <div id="add-animal" ng-show="formIndividual">
+        <div id="add-animal" ng-show="formAnimal">
             <form class="pure-form pure-form-aligned" name="addAnimalForm">
                 <fieldset>
                     <div class="pure-control-group">
                         <legend>Individual</legend>
                         <label for="family">Family</label>
-                        <select name="family">
+                        <select name="family" ng-model="animal.family">
                                 <option value="">Select a family</option>
-                                <option ng-repeat="family in familiesList" ng-model="family.name">{{family.name}}</option>
+                                <option ng-repeat="family in familiesList" value="{{family.name}}">{{family.name}}</option>
                         </select>
                         <span class="pure-form-message-inline"></span>
                     </div>
@@ -154,17 +154,19 @@
 
         <form class="pure-form" name="filterForm">
             <fieldset>
-                <legend>Family</legend>
-                <select name="filterFamily" ng-model="filterFamily">
+                <legend>Filter by Family</legend>
+                <select name="filterFamily" ng-model="animal.family">
                     <option value="">Select a family</option>
-                    <option ng-repeat="family in familiesList">{{family.name}}</option>
+                    <option ng-repeat="family in familiesList" value="{{family.name}}">{{family.name}}</option>
                 </select>
-                <button type="submit" class="pure-button pure-button-primary" ng-click="filterByFamily()">Filter</button>
             </fieldset>
         </form>
 
         <table class="pure-table">
-            <p>Family: <span id="filter-selected-family">All</span></p>
+            <p>Family:
+                <span ng-if="!animal.family">All</span>
+                <span ng-if="animal.family">{{animal.family}}</span>
+            </p>
             <thead>
                 <tr>
                     <th>Name</th>
@@ -174,7 +176,7 @@
             </thead>
 
             <tbody>
-                <tr ng-repeat="animal in animalsList">
+                <tr ng-repeat="animal in animalsList | filter : animal.family">
                     <td>{{animal.name}}</td>
                     <td>{{animal.age}}</td>
                     <td><button class="button-error pure-button">Remove</button></a>
