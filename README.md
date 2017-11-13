@@ -22,3 +22,13 @@ This project is a static web page and can be executed directly from a browser po
 any server.
 
 The document is structured in a way that can provide two different CSS files to modify the layout of the page.
+
+## Running
+
+1 - Install the packages:
+
+```bash
+npm install
+```
+
+2 - Open the index.html file in the browser

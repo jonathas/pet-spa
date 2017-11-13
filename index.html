@@ -47,9 +47,10 @@
         </div>
     </div>
 
-    <script src="./js/lib/angular.min.js"></script>
-    <script src="./js/lib/angular-resource.min.js"></script>
-    <script src="./js/lib/angular-route.min.js"></script>
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <script src="./node_modules/angular-resource/angular-resource.min.js"></script>
+    <script src="./node_modules/angular-route/angular-route.min.js"></script>
+    <script src="./node_modules/lodash/lodash.min.js"></script>
 
     <script src="./js/App.js"></script>
     <script src="./js/services/AnimalService.js"></script>
@@ -68,27 +69,31 @@
         </div>
 
         <div id="add-family" ng-show="formFamily">
-            <form class="pure-form pure-form-aligned">
+            <form class="pure-form pure-form-aligned" name="addFamilyForm">
                 <fieldset>
                     <div class="pure-control-group">
                         <legend>Family</legend>
+                        <label for="name">Name</label>
+                        <input id="name" type="text" ng-model="family.name">
+                    </div>
+                    <div class="pure-control-group">
                         <label for="diet">Diet</label>
-                        <input id="diet" type="text">
+                        <input id="diet" type="text" ng-model="family.diet">
                         <span class="pure-form-message-inline"></span>
                     </div>
 
                     <div class="pure-control-group">
                         <label for="noise">Noise</label>
-                        <input id="noise" type="text">
+                        <input id="noise" type="text" ng-model="family.noise">
                     </div>
 
                     <div class="pure-control-group">
                         <label for="ability">Ability</label>
-                        <input id="ability" type="text">
+                        <input id="ability" type="text" ng-model="family.ability">
                     </div>
 
                     <div class="pure-controls">
-                        <button type="submit" class="pure-button pure-button-primary submit">Add</button>
+                        <button type="submit" class="pure-button pure-button-primary submit" ng-click="addFamily()">Add</button>
                     </div>
                 </fieldset>
             </form>
