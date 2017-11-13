@@ -2,11 +2,11 @@ angular.module('petApp')
     .service('AnimalService', function(FamilyService) {
         let animalsList = [];
 
-        this.getAnimalObj = function() {
+        this.getAnimalObj = () => {
             return { family: '', name: '', age: 0 };
         }
 
-        this.addAnimal = function(animal) {
+        this.addAnimal = (animal) => {
             if (animal.name === "") return false;
             let clonedAnimal = _.clone(animal);
             let any = animalsList.filter(animalObj => animalObj.name === clonedAnimal.name);
@@ -18,16 +18,11 @@ angular.module('petApp')
             return false;
         }
 
-        this.removeAnimal = function(animal) {
+        this.removeAnimal = (animal) => {
             animalsList = animalsList.filter(animalObj => animalObj.name !== animal.name);
             FamilyService.updateIndividualCount(animal.family, "sub");
         }
 
-        this.getAnimals = function(family) {
-            if (!family) {
-                return animalsList;
-            }
-            let filtered = animalsList.filter(animal => animal.family === family);
-            return filtered;
-        }
+        this.getAnimals = () => animalsList;
+
     });

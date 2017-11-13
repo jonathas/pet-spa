@@ -1,5 +1,6 @@
 angular.module('petApp')
     .controller('GlobalCtrl', function($scope, FamilyService, AnimalService) {
+
         $scope.formFamily = false;
         $scope.formAnimal = false;
 
@@ -8,24 +9,24 @@ angular.module('petApp')
 
         $scope.familiesList = FamilyService.getFamilies();
 
-        $scope.showAddFamily = function() {
+        $scope.showAddFamily = () => {
             $scope.formFamily = true;
             $scope.formAnimal = false;
         };
 
-        $scope.showAddAnimal = function() {
+        $scope.showAddAnimal = () => {
             $scope.formFamily = false;
             $scope.formAnimal = true;
         };
 
-        $scope.addFamily = function() {
+        $scope.addFamily = () => {
             if (FamilyService.addFamily($scope.family)) {
                 $scope.family = FamilyService.getFamilyObj();
                 $scope.familiesList = FamilyService.getFamilies();
             }
         };
 
-        $scope.addAnimal = function() {
+        $scope.addAnimal = () => {
             if (AnimalService.addAnimal($scope.animal)) {
                 $scope.animal = AnimalService.getAnimalObj();
             }

@@ -4,7 +4,7 @@ angular.module('petApp')
         $scope.familiesList = FamilyService.getFamilies();
         $scope.animalsList = AnimalService.getAnimals();
 
-        $scope.removeAnimal = function(animal) {
+        $scope.removeAnimal = (animal) => {
             AnimalService.removeAnimal(animal);
             $scope.animalsList = AnimalService.getAnimals();
         }
