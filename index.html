@@ -69,7 +69,7 @@
         </div>
 
         <div id="add-family" ng-show="formFamily">
-            <form class="pure-form pure-form-aligned" name="addFamilyForm" novalidate>
+            <form class="pure-form pure-form-aligned" name="addFamilyForm">
                 <fieldset>
                     <div class="pure-control-group">
                         <legend>Family</legend>
@@ -100,7 +100,7 @@
         </div>
 
         <div id="add-animal" ng-show="formAnimal">
-            <form class="pure-form pure-form-aligned" name="addAnimalForm" novalidate>
+            <form class="pure-form pure-form-aligned" name="addAnimalForm">
                 <fieldset>
                     <div class="pure-control-group">
                         <legend>Individual</legend>
@@ -109,7 +109,6 @@
                                 <option value="">Select a family</option>
                                 <option ng-repeat="family in familiesList" value="{{family.name}}">{{family.name}}</option>
                         </select>
-                        <span class="pure-form-message-inline" ng-show="addAnimalForm.animal.family.$error.required">The family is required</span>
                     </div>
 
                     <div class="pure-control-group">
