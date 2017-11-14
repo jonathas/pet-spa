@@ -26,3 +26,8 @@ The document is structured in a way that can provide two different CSS files to 
 ## Running
 
 In order to run this project, just download the code as a zip file or clone the project, and then open the index.html file on your browser.
+
+## TODO
+
+- Implement tests
+
