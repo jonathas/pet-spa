@@ -1,5 +1,12 @@
 angular.module('petApp')
-    .controller('GlobalCtrl', function($scope, FamilyService, AnimalService) {
+    .controller('GlobalCtrl', function($rootScope, $scope, StyleService, FamilyService, AnimalService) {
+
+        $rootScope.stylesList = StyleService.getStyles();
+        $rootScope.selectedStyle = StyleService.getSelectedStyle();
+
+        $rootScope.setStyle = (style) => {
+            StyleService.select(style);
+        }
 
         $scope.formFamily = false;
         $scope.formAnimal = false;

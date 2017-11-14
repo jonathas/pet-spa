@@ -7,8 +7,8 @@
     padding-bottom: 30px;
 }
 
-.submit {
-    margin-left: -27px;
+.pure-form-aligned .pure-controls {
+    margin-left: 0;
 }
 
 .button-error {
@@ -16,6 +16,11 @@
     color: white;
     border-radius: 4px;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.style-selector-form {
+    margin-top: 20px;
+    margin-bottom: -40px;
 }
 
 

@@ -7,12 +7,9 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="styles/pure-min.css">
-    <!--[if lte IE 8]>
-            <link rel="stylesheet" href="css/layouts/side-menu-old-ie.css">
-        <![endif]-->
-    <!--[if gt IE 8]><!-->
-    <link rel="stylesheet" href="styles/side-menu.css">
-    <!--<![endif]-->
+
+    <link rel="stylesheet" ng-href="{{selectedStyle.href}}">
+
     <link rel="stylesheet" href="styles/style.css">
 </head>
 
@@ -20,15 +17,14 @@
 
     <div id="layout">
         <!-- Menu toggle -->
-        <a href="#menu" id="menuLink" class="menu-link">
+        <a href="#menu" id="menuLink" class="menu-link" ng-if="selectedStyle.id == 'sidemenu'">
             <!-- Hamburger icon -->
             <span></span>
         </a>
 
-        <div id="menu">
-            <div class="pure-menu">
-                <a class="pure-menu-heading" ng-href="#!global">Animals</a>
-
+        <div id="menu" ng-class="{'header': selectedStyle.id == 'marketing'}">
+            <div ng-class="selectedStyle.classes">
+                <a class="pure-menu-heading" ng-href="#!global">{{selectedStyle.menuHeading}}</a>
                 <ul class="pure-menu-list">
                     <li class="pure-menu-item"><a ng-href="#!global" class="pure-menu-link">Global</a></li>
                     <li class="pure-menu-item"><a ng-href="#!specific" class="pure-menu-link">Specific</a></li>
@@ -40,8 +36,16 @@
             <div class="header">
                 <h1>Pet Web Project</h1>
             </div>
-
             <div class="content">
+                <form class="style-selector-form pure-form pure-form-aligned">
+                    <fieldset>
+                        <div class="pure-control-group">
+                            <label for="style">Select the layout</label>
+                            <select name="style" ng-change="setStyle(selectedStyle)" ng-model="selectedStyle" ng-options="style.name for style in stylesList">
+                        </select>
+                        </div>
+                    </fieldset>
+                </form>
                 <div ng-view=""></div>
             </div>
         </div>
@@ -53,12 +57,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 
     <script src="./js/App.js"></script>
+    <script src="./js/services/StyleService.js"></script>
     <script src="./js/services/AnimalService.js"></script>
     <script src="./js/services/FamilyService.js"></script>
     <script src="./js/controllers/GlobalCtrl.js"></script>
     <script src="./js/controllers/SpecificCtrl.js"></script>
 
-    <script type="text/ng-template" id="global.html" ng-controller="GlobalCtrl">
+    <script type="text/ng-template" id="global.html">
         <h2 class="content-subhead">Global list</h2>
 
         <div class="pure-menu pure-menu-horizontal">
@@ -151,7 +156,7 @@
         </table>
     </script>
 
-    <script type="text/ng-template" id="specific.html" ng-controller="SpecificCtrl">
+    <script type="text/ng-template" id="specific.html">
         <h2 class="content-subhead">Specific list</h2>
 
         <form class="pure-form" name="filterForm">
