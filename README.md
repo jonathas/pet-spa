@@ -22,3 +22,7 @@ This project is a static web page and can be executed directly from a browser po
 any server.
 
 The document is structured in a way that can provide two different CSS files to modify the layout of the page.
+
+## Running
+
+In order to run this project, just download the code as a zip file or clone the project, and then open the index.html file on your browser.
